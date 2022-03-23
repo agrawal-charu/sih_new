@@ -13,38 +13,56 @@
         <link rel="stylesheet" href="">
     </head>
     <style>
-        body {
-        background: url("{{url_for('static',filename='images/flag.png')}}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: fixed;
-      }
-      .header {
-        padding: 10px;
-        font-size: 200%;
-        height: 75px;
-        box-shadow: 5px;
-        box-shadow: 0 2px 8px 2px rgb(236, 191, 191);
-      }
-      ul{
-          font-size: 10px;
-      }
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background: url("{{url_for('static',filename='images/flag.png')}}");
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            
+        }
+        .header{
+            padding: 10px;
+            font-size: 210%;
+            height: 75px;
+            text-decoration: underline;
+            text-align: center;
+        }
+        .list{
+            margin: 0 auto;
+            margin-top: 30px;
+            background-color: rgba(255,255,255,0.5);
+            font-size: 20px;
+            width: 50%;
+            border-radius: 12px;
+            padding: 5px;
+            box-shadow: 0 2px 8px 2px rgb(236, 191, 191);
+        }
+        li{
+            font-size: 25px;
+            margin: 5px;
+        }
+        
     </style>
     <body>
         <div class="header">
-            <p>People Present</p>
+            <p>Current Attendee List</p>
         </div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <ol>
+        <div class="list">
+            <ol>
                 {%for n in names%}
                 <li>
                     {{n}}
-                </li>
+                </li>                
                 {%endfor%}
-        </ol>
+            </ol>
+        </div>
         <script src="" async defer></script>
     </body>
 </html>
