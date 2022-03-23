@@ -12,17 +12,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
+    <style>
+        body {
+        background: url("{{url_for('static',filename='images/flag.png')}}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+      }
+      .header {
+        padding: 10px;
+        font-size: 200%;
+        height: 75px;
+        box-shadow: 5px;
+        box-shadow: 0 2px 8px 2px rgb(236, 191, 191);
+      }
+      ul{
+          font-size: 10px;
+      }
+    </style>
     <body>
+        <div class="header">
+            <p>People Present</p>
+        </div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <ul>
+        <ol>
                 {%for n in names%}
                 <li>
                     {{n}}
                 </li>
                 {%endfor%}
-        </ul>
+        </ol>
         <script src="" async defer></script>
     </body>
 </html>
