@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <title>MNREGA</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: url("flag.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+      }
+      .header {
+        padding: 10px;
+        font-size: 200%;
+        height: 75px;
+        box-shadow: 5px;
+        box-shadow: 0 2px 8px 2px rgb(236, 191, 191);
+      }
+      .opt {
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 2px 2px 8px 2px rgb(156, 154, 154);
+        border-radius: 12px;
+        width: 20%;
+        height: 20%;
+        margin-top: 20px;
+        padding: 10px;
+        display: block;
+        font-size: 20px;
+      }
+      .opt:hover {
+        background-color: rgba(226, 222, 222, 0.8);
+        font-weight: 600;
+      }
+      @media only screen and (max-width: 768px) {
+        .header {
+          font-size: 150%;
+          height: 70px;
+        }
+        .opt {
+          font-size: 10px;
+          width: 50%;
+        }
+      }
+      @media only screen and (max-width: 480px) {
+        .header {
+          font-size: 100%;
+          height: 60px;
+        }
+        .opt {
+          font-size: 10px;
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <p style="text-align: center">
+        Mahatma Gandhi National Rural Employment Guarantee Act
+      </p>
+    </div>
+
+    <div style="margin-top: 100px">
+      <button
+        type="button"
+        class="opt btn btn-light"
+        data-bs-toggle="modal"
+        data-bs-target="#upload"
+      >
+        Upload Photo
+      </button>
+      
+      <form method="POST" enctype="multipart/form-data" action="http://127.0.0.1:5000/predict" >
+        <button type="submit" class="opt btn btn-light">Take Attendance</button>
+      </form>
+    </div>
+
+    <div
+      class="modal fade"
+      id="upload"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Attendance</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              action="http://127.0.0.1:5000/upload"
+              enctype="multipart/form-data"
+              id="form"
+              method="POST"
+            >
+              <div class="mb-3">
+                <label for="uploadphoto" class="form-label"
+                  >Upload a photo</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="inputimage"
+                  name="img"
+                  onchange="showpic(event)"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+            <div style="padding: 10px; text-align: center">
+              <img id="output" width="80%" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var showpic = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
+  </body>
+</html>
